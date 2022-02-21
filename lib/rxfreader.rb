@@ -15,6 +15,48 @@ module RXFRead
 
   class FileX
 
+    def self.exists?(filename)
+
+      type = FileX.filetype(filename)
+
+      filex = case type
+      when :file
+        File
+      when :dfs
+        DfsFile
+      else
+        nil
+      end
+
+      return nil unless filex
+
+      filex.exists? filename
+
+    end
+
+
+    def self.filetype(x)
+
+      return :string if x.lines.length > 1
+
+      case x
+      when /^https?:\/\//
+        :http
+      when /^dfs:\/\//
+        :dfs
+      when /^file:\/\//
+        :file
+      else
+
+        if File.exists?(x) then
+          :file
+        else
+          :text
+        end
+
+      end
+    end
+
     def self.read(x)
       RXFReader.read(x).first
     end
