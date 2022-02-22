@@ -5,7 +5,7 @@
 
 require 'gpd-request'
 require 'rest-client'
-require 'drb_fileclient'
+require 'drb_fileclient-reader'
 
 
 # RXF originally stands for Read XML File.
