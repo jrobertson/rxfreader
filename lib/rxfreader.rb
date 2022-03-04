@@ -79,7 +79,11 @@ class RXFReader
 
     raise RXFReaderException, 'nil found, expected a string' if x.nil?
 
-    if x.strip[/^<(\?xml|[^\?])/] then
+    if x.class.to_s =~ /Rexle$/ then
+
+      [x.xml, :rexle]
+
+    elsif x.strip[/^<(\?xml|[^\?])/] then
 
       [x, :xml]
 
