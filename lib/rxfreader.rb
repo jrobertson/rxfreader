@@ -2,7 +2,8 @@
 
 # file: rxfreader.rb
 
-
+require 'net/http'
+require 'uri'
 require 'gpd-request'
 require 'rest-client'
 require 'drb_fileclient-reader'
@@ -134,5 +135,20 @@ class RXFReader
       [x, :unknown]
     end
   end
+
+  def reveal(uri_str, a=[])
+
+    response = Net::HTTP.get_response(URI.parse(uri_str))
+    url = case response
+      when Net::HTTPRedirection then response['location']
+    end
+
+    return a << uri_str if url.nil?
+
+    reveal(url, a << uri_str)
+  end
+
+end
+
 
 end
