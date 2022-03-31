@@ -136,7 +136,7 @@ class RXFReader
     end
   end
 
-  def reveal(uri_str, a=[])
+  def self.reveal(uri_str, a=[])
 
     response = Net::HTTP.get_response(URI.parse(uri_str))
     url = case response

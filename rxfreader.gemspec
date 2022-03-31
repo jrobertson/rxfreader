@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'rxfreader'
-  s.version = '0.3.1'
+  s.version = '0.3.2'
   s.summary = 'Reads a file from an HTTP address, DFS address, or local location.'
   s.authors = ['James Robertson']
   s.files = Dir['lib/rxfreader.rb']
