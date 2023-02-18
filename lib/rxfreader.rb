@@ -16,6 +16,7 @@ module RXFRead
 
   class FileX
 
+    def self.dirname(s)   RXFReader.dirname(s)      end    
     def self.exist?(s)    RXFReader.exist?(s)       end    
     def self.exists?(s)   RXFReader.exist?(s)       end
     def self.filetype(s)  RXFReader.filetype(s)     end
@@ -32,6 +33,10 @@ end
 class RXFReader
   using ColouredText
 
+  def self.dirname(s)
+    File.dirname s
+  end
+  
   def self.exist?(filename)
 
     type = self.filetype(filename)
